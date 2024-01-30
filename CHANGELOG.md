@@ -6,3 +6,9 @@
 
 * Refractor ```AppInfo``` class.
 * Update documentation.
+
+
+## 0.0.3
+
+* Update documentation.
+* Use enums for ```ProfileType```

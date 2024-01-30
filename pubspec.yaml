@@ -1,6 +1,6 @@
 name: apps_list
 description: A Flutter package for listing and launching Android apps across multiple profiles.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/kelvinkipruto/app_list
 repository: https://github.com/kelvinkipruto/app_list
 
