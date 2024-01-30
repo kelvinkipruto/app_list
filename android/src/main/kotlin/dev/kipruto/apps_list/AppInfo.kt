@@ -37,7 +37,7 @@ class AppInfo(
             app: LauncherActivityInfo
         ): AppInfo {
             val isMainProfile = app.user == Process.myUserHandle()
-            val userProfile = if (isMainProfile) "personal" else "work"
+            val userProfile = if (isMainProfile) "PERSONAL" else "WORK"
             val icon =
                 packageManager.getUserBadgedIcon(
                     appInfo.loadIcon(packageManager),

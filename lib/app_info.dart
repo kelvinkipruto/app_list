@@ -1,6 +1,8 @@
 /// Dart package for handling app information.
 import 'dart:typed_data';
 
+enum ProfileType { personal, work }
+
 /// Class representing information about an app.
 class AppInfo {
   /// The name of the app.
@@ -16,7 +18,7 @@ class AppInfo {
   bool isSystemApp;
 
   /// The profile associated with the app.
-  String profile;
+  ProfileType profile;
 
   /// The serial number of the app.
   int serialNumber;
@@ -32,7 +34,7 @@ class AppInfo {
       data["icon"],
       data["package_name"],
       data["is_system_app"],
-      data["profile"],
+      _getProfileTypeFromString(data["profile"]),
       data["serial_number"],
     );
   }
@@ -46,5 +48,16 @@ class AppInfo {
   @override
   String toString() {
     return "AppInfo{name=$name, packageName=$packageName, isSystemApp=$isSystemApp, profile=$profile, serialNumber=$serialNumber";
+  }
+
+  static ProfileType _getProfileTypeFromString(String profileType) {
+    switch (profileType) {
+      case 'PERSONAL':
+        return ProfileType.personal;
+      case 'WORK':
+        return ProfileType.work;
+      default:
+        throw ArgumentError('Unsupported ProfileType value: $profileType');
+    }
   }
 }
