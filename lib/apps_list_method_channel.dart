@@ -19,7 +19,9 @@ class MethodChannelAppsList extends AppsListPlatform {
         'serialNumber': serialNumber,
       });
     } on PlatformException {
-      print('Failed to launch app.');
+      if (kDebugMode) {
+        print('Failed to launch app.');
+      }
     }
   }
 
