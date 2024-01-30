@@ -4,7 +4,6 @@ import 'package:apps_list/apps_list.dart';
 import 'package:apps_list/apps_list_platform_interface.dart';
 import 'package:apps_list/apps_list_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'dart:ui';
 
 class MockAppsListPlatform
     with MockPlatformInterfaceMixin
