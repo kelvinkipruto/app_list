@@ -27,11 +27,11 @@ class MethodChannelAppsList extends AppsListPlatform {
 
   // get installed apps
   @override
-  Future<List<AppInfoByProfile>> getInstalledApps() async {
+  Future<List<AppInfo>> getInstalledApps() async {
     try {
       List<Object?> apps = await methodChannel.invokeMethod('getInstalledApps');
-      List<AppInfoByProfile> appInfoList =
-          apps.map((app) => AppInfoByProfile.create(app)).toList();
+      List<AppInfo> appInfoList =
+          apps.map((app) => AppInfo.create(app)).toList();
       return Future.value(appInfoList);
     } on PlatformException {
       debugPrint("APPS ERROR");

@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _appsListPlugin = AppsList();
-  List<AppInfoByProfile> _apps = [];
+  List<AppInfo> _apps = [];
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initPlatformState() async {
-    List<AppInfoByProfile> apps = [];
+    List<AppInfo> apps = [];
     try {
       apps = await _appsListPlugin.getInstalledApps();
     } on PlatformException {

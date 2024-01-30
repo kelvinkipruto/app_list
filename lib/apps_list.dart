@@ -7,7 +7,7 @@ class AppsList {
     return AppsListPlatform.instance.launchApp(packageName, serialNumber);
   }
 
-  Future<List<AppInfoByProfile>> getInstalledApps() async {
+  Future<List<AppInfo>> getInstalledApps() async {
     return AppsListPlatform.instance.getInstalledApps();
   }
 }

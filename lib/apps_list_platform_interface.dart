@@ -28,7 +28,7 @@ abstract class AppsListPlatform extends PlatformInterface {
     throw UnimplementedError('launchApp() has not been implemented.');
   }
 
-  Future<List<AppInfoByProfile>> getInstalledApps() async {
+  Future<List<AppInfo>> getInstalledApps() async {
     throw UnimplementedError(
         'getInstalledAppsByProfile() has not been implemented.');
   }

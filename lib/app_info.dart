@@ -1,51 +1,33 @@
+/// Dart package for handling app information.
 import 'dart:typed_data';
 
-// enum AppProfile {
-//   Work,
-//   Personal
-
-//   // from string
-// }
-
+/// Class representing information about an app.
 class AppInfo {
+  /// The name of the app.
   String name;
+
+  /// The icon of the app as a list of unsigned 8-bit integers.
   Uint8List icon;
+
+  /// The package name of the app.
   String packageName;
+
+  /// A boolean value indicating whether the app is a system app.
   bool isSystemApp;
 
-  AppInfo(this.name, this.icon, this.packageName, this.isSystemApp);
-
-  factory AppInfo.create(dynamic data) {
-    return AppInfo(
-      data["name"],
-      data["icon"],
-      data["package_name"],
-      data["is_system_app"],
-    );
-  }
-
-  int compareTo(AppInfo other) {
-    return name.compareTo(other.name);
-  }
-
-  @override
-  String toString() {
-    return "AppInfo{name=$name, packageName=$packageName, isSystemApp=$isSystemApp";
-  }
-}
-
-class AppInfoByProfile extends AppInfo {
-  // profile can only be personal or work
+  /// The profile associated with the app.
   String profile;
+
+  /// The serial number of the app.
   int serialNumber;
 
-  AppInfoByProfile(String name, Uint8List icon, String packageName,
-      bool isSystemApp, this.profile, this.serialNumber)
-      : super(name, icon, packageName, isSystemApp);
+  /// Constructor for the AppInfo class.
+  AppInfo(this.name, this.icon, this.packageName, this.isSystemApp,
+      this.profile, this.serialNumber);
 
-  factory AppInfoByProfile.create(dynamic data) {
-    // AppProfile profile = AppProfile.values[data["profile"]];
-    return AppInfoByProfile(
+  /// Factory constructor for creating an instance of AppInfo from dynamic data.
+  factory AppInfo.create(dynamic data) {
+    return AppInfo(
       data["name"],
       data["icon"],
       data["package_name"],
@@ -55,8 +37,14 @@ class AppInfoByProfile extends AppInfo {
     );
   }
 
+  /// Method for comparing this AppInfo instance with another based on name.
+  int compareTo(AppInfo other) {
+    return name.compareTo(other.name);
+  }
+
+  /// Method for converting this AppInfo instance to a string.
   @override
   String toString() {
-    return "AppInfoByProfile{name=$name, packageName=$packageName, isSystemApp=$isSystemApp, profile=$profile";
+    return "AppInfo{name=$name, packageName=$packageName, isSystemApp=$isSystemApp, profile=$profile, serialNumber=$serialNumber";
   }
 }

@@ -17,7 +17,7 @@ void main() {
 
   testWidgets('getPlatformVersion test', (WidgetTester tester) async {
     final AppsList plugin = AppsList();
-    final List<AppInfoByProfile> apps = await plugin.getInstalledApps();
+    final List<AppInfo> apps = await plugin.getInstalledApps();
     expect(apps, isNotNull);
   });
 }

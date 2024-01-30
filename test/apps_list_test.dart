@@ -11,7 +11,7 @@ class MockAppsListPlatform
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<List<AppInfoByProfile>> getInstalledApps() {
+  Future<List<AppInfo>> getInstalledApps() {
     return Future.value([]);
   }
 
@@ -33,7 +33,7 @@ void main() {
     MockAppsListPlatform fakePlatform = MockAppsListPlatform();
     AppsListPlatform.instance = fakePlatform;
 
-    List<AppInfoByProfile> apps = await appsListPlugin.getInstalledApps();
+    List<AppInfo> apps = await appsListPlugin.getInstalledApps();
     expect(apps, isNotNull);
   });
 }
