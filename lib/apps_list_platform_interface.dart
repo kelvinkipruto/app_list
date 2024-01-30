@@ -1,3 +1,4 @@
+import 'package:apps_list/app_info.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'apps_list_method_channel.dart';
@@ -25,5 +26,14 @@ abstract class AppsListPlatform extends PlatformInterface {
 
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<void> launchApp(String packageName, int serialNumber) async {
+    throw UnimplementedError('launchApp() has not been implemented.');
+  }
+
+  Future<List<AppInfoByProfile>> getInstalledApps() async {
+    throw UnimplementedError(
+        'getInstalledAppsByProfile() has not been implemented.');
   }
 }

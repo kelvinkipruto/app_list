@@ -1,3 +1,4 @@
+import 'package:apps_list/app_info.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -18,6 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   final _appsListPlugin = AppsList();
+  List<AppInfoByProfile> _apps = [];
 
   @override
   void initState() {
@@ -28,11 +30,13 @@ class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
+    List<AppInfoByProfile> apps = [];
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _appsListPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _appsListPlugin.getPlatformVersion() ??
+          'Unknown platform version';
+      apps = await _appsListPlugin.getInstalledApps();
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -44,6 +48,7 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       _platformVersion = platformVersion;
+      _apps = apps;
     });
   }
 
@@ -54,8 +59,29 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text('Running on: $_platformVersion\n'),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _apps.length,
+                itemBuilder: (context, index) {
+                  final application = _apps[index];
+                  return ListTile(
+                    leading: Image.memory(application.icon),
+                    title: Text(application.name),
+                    subtitle: Text(
+                        "${application.packageName} ${application.serialNumber} ${application.profile}"),
+                    onTap: () => _appsListPlugin.launchApp(
+                        application.packageName, application.serialNumber),
+                  );
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
