@@ -1,6 +1,6 @@
 # Apps List Plugin 
 
-Flutter plugin to allow yo to query launchable android apps. It supports getting work profile apps
+Flutter [plugin](https://pub.dev/packages/apps_list) to allow yo to query launchable android apps. It supports getting work profile apps
 
 ## Usage
 Get launchable apps
