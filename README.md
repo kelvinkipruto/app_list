@@ -1,15 +1,16 @@
-# apps_list
+# Apps List Plugin 
 
-A new Flutter plugin project.
+Flutter plugin to allow yo to query launchable android apps. It supports getting work profile apps
 
-## Getting Started
+## Usage
+Get launchable apps
+```dart
+ List<AppInfoByProfile> apps = AppsList.getInstalledApps()
+```
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Launch an app
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+await AppsList..launchApp(application.packageName, application.serialNumber);
+```
 
