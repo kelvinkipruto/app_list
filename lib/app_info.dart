@@ -1,7 +1,17 @@
 /// Dart package for handling app information.
 import 'dart:typed_data';
 
-enum ProfileType { personal, work }
+/// An enumeration of profile types.
+///
+/// This enum is used to distinguish between different types of profiles
+/// on a device. Currently, it supports two types: `personal` and `work`.
+enum ProfileType {
+  /// Represents a personal profile on a device.
+  personal,
+
+  /// Represents a work profile on a device.
+  work
+}
 
 /// Class representing information about an app.
 class AppInfo {
