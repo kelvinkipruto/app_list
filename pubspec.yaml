@@ -1,5 +1,5 @@
 name: apps_list
-description: Flutter plugin to query for android launchable apps.
+description: List and launch launchable apps on an android device (IOS Not supported). It also supports multiple profiles.
 version: 0.0.1
 homepage: https://github.com/kelvinkipruto/app_list
 repository: https://github.com/kelvinkipruto/app_list
