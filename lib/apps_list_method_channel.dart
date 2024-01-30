@@ -10,14 +10,8 @@ class MethodChannelAppsList extends AppsListPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('apps_list');
 
-  @override
-  Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
-
   // launch app
+  @override
   Future<void> launchApp(String packageName, int serialNumber) async {
     try {
       await methodChannel.invokeMethod('launchApp', {
@@ -29,8 +23,9 @@ class MethodChannelAppsList extends AppsListPlatform {
     }
   }
 
+  // get installed apps
+  @override
   Future<List<AppInfoByProfile>> getInstalledApps() async {
-    // Call relevant Kotlin method
     try {
       List<Object?> apps = await methodChannel.invokeMethod('getInstalledApps');
       List<AppInfoByProfile> appInfoList =

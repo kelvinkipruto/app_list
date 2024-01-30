@@ -1,3 +1,4 @@
+import 'package:apps_list/app_info.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:apps_list/apps_list.dart';
 import 'package:apps_list/apps_list_platform_interface.dart';
@@ -7,9 +8,17 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockAppsListPlatform
     with MockPlatformInterfaceMixin
     implements AppsListPlatform {
+  Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<List<AppInfoByProfile>> getInstalledApps() {
+    return Future.value([]);
+  }
+
+  @override
+  Future<void> launchApp(String packageName, int serialNumber) {
+    return Future.value();
+  }
 }
 
 void main() {
@@ -19,11 +28,12 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelAppsList>());
   });
 
-  test('getPlatformVersion', () async {
+  test('getAppsList', () async {
     AppsList appsListPlugin = AppsList();
     MockAppsListPlatform fakePlatform = MockAppsListPlatform();
     AppsListPlatform.instance = fakePlatform;
 
-    expect(await appsListPlugin.getPlatformVersion(), '42');
+    List<AppInfoByProfile> apps = await appsListPlugin.getInstalledApps();
+    expect(apps, isNotNull);
   });
 }

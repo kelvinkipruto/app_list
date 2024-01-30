@@ -24,10 +24,6 @@ abstract class AppsListPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
   Future<void> launchApp(String packageName, int serialNumber) async {
     throw UnimplementedError('launchApp() has not been implemented.');
   }
