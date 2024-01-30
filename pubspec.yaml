@@ -1,6 +1,6 @@
 name: apps_list
-description: List and launch launchable apps on an android device (IOS Not supported). It also supports multiple profiles.
-version: 0.0.1
+description: A Flutter package for listing and launching Android apps across multiple profiles.
+version: 0.0.2
 homepage: https://github.com/kelvinkipruto/app_list
 repository: https://github.com/kelvinkipruto/app_list
 
